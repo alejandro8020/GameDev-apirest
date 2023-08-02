@@ -4,10 +4,11 @@ import com.informatorio.GameDevapirest.domain.Desarrollador;
 import com.informatorio.GameDevapirest.domain.Juego;
 import com.informatorio.GameDevapirest.mapper.juego.JuegoMapper;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
+@Component
 public class JuegoMapperImpl implements JuegoMapper {
 
     @Override
