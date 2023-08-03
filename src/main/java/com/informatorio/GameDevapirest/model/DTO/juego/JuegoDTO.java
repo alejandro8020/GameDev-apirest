@@ -18,7 +18,7 @@ import lombok.*;
 public class JuegoDTO {
     private String title;
     private String description;
-    private List<DesarrolladorDTO> desarrollador = new ArrayList<>();
-    private List<TareaDTO> tarea = new ArrayList<>();
+    //private List<DesarrolladorDTO> desarrollador = new ArrayList<>();
+   // private List<TareaDTO> tarea = new ArrayList<>();
     private String  fechaLanzamiento;
 }

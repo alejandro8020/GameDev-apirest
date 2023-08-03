@@ -31,14 +31,14 @@ public class Juego {
     @Column(length = 250,columnDefinition = "varchar(250)",updatable = true,nullable = false)
     private String description;
 
-    @Builder.Default
+    /*@Builder.Default
     @OneToMany(mappedBy = "juego",cascade = {CascadeType.REMOVE})
-    private List<Desarrollador> desarrollador = new ArrayList<>();
+    private List<Desarrollador> desarrollador = new ArrayList<>();*/
 
-    @Builder.Default
+    /*@Builder.Default
     @OneToMany(mappedBy = "juego",cascade = {CascadeType.REMOVE})
     private List<Tarea> tarea = new ArrayList<>();
-
+*/
     private LocalDateTime fechaLanzamiento;
 
 }

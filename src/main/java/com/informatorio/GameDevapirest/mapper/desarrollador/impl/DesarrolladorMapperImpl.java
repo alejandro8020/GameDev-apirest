@@ -3,9 +3,10 @@ package com.informatorio.GameDevapirest.mapper.desarrollador.impl;
 import com.informatorio.GameDevapirest.domain.Desarrollador;
 import com.informatorio.GameDevapirest.mapper.desarrollador.DesarrolladorMapper;
 import com.informatorio.GameDevapirest.model.DTO.desarrollador.DesarrolladorDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
-
+@Component
 public class DesarrolladorMapperImpl implements DesarrolladorMapper {
     @Override
     public Desarrollador desarrolladorDTOToDesarrollador(DesarrolladorDTO desarrolladorDTO) {
