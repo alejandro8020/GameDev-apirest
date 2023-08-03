@@ -24,4 +24,10 @@ public class JuegoServiceImpl implements JuegoService {
         }
         return listJuegos;
     }
+
+    @Override
+    public Juego createJuego(JuegoDTO juegoDTO) {
+        Juego newJuego = juegoMapper.juegoDTOToJuego(juegoDTO);
+        return juegoRepository.save(newJuego);
+    }
 }

@@ -11,4 +11,5 @@ public class DesarrolladorDTO {
     private String name;
     private String mail;
     private DesarrolladorEnum rol;
+    private String idJuego;
 }
