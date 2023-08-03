@@ -2,6 +2,7 @@ package com.informatorio.GameDevapirest.controller.desarrollador;
 import com.informatorio.GameDevapirest.domain.Desarrollador;
 import com.informatorio.GameDevapirest.exception.NotFoundException;
 import com.informatorio.GameDevapirest.model.DTO.desarrollador.DesarrolladorDTO;
+import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 import com.informatorio.GameDevapirest.service.desarrollador.DesarrolladorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,11 @@ public class DesarrolladorController {
         headers.add("Location","/api/v1/book/"+desarrolladorCreated.getUuid());
 
         return new ResponseEntity(headers,HttpStatus.CREATED);
+    }
+
+    @GetMapping()
+    public List<DesarrolladorDTO> getAllJuego(){
+        log.info("Se esta haciendo una consulta por los programadores");
+        return desarrolladorService.getAllDesarrollador();
     }
 }
