@@ -5,6 +5,7 @@ import com.informatorio.GameDevapirest.domain.Tarea;
 import com.informatorio.GameDevapirest.exception.NotFoundException;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 import com.informatorio.GameDevapirest.model.DTO.tarea.TareaDTO;
+import com.informatorio.GameDevapirest.model.DTO.tarea.TareaEstadoDTO;
 import com.informatorio.GameDevapirest.model.DTO.tarea.TareaResponseDTO;
 import com.informatorio.GameDevapirest.service.juego.JuegoService;
 import com.informatorio.GameDevapirest.service.tarea.TareaService;
@@ -16,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController //Anotacion a nivel de clase
 @RequestMapping("/api/v1/tarea") //Todos los endpoints comparten esta URI
@@ -39,5 +42,19 @@ public class TareaController {
         headers.add("Location","/api/v1/tarea/"+ tareaCreated.getUuid());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{idTarea}")
+    public ResponseEntity CambiarEstadoTarea(@PathVariable(value = "idTarea") UUID idTarea, @RequestBody TareaEstadoDTO tareaUpdated)
+            throws NotFoundException {
+        Optional<Tarea> tarea = tareaService.CambiarEstadoTarea(idTarea,tareaUpdated);
+
+        if(tarea.isEmpty()){
+            log.warn("Tarea no encontrada");
+            throw new NotFoundException();
+        }else {
+            log.info("Tarea actualizado");
+            return  new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
     }
 }
