@@ -9,5 +9,5 @@ import java.util.Optional;
 import java.util.UUID;
 @Repository
 public interface TareaRepository extends JpaRepository<Tarea, UUID> {
-    Optional<Tarea> findBydescripcionIgnoreCase(String descripcion);
+    Optional<Tarea> findByDescripcionIgnoreCase(String descripcion);
 }

@@ -24,6 +24,7 @@ public class DesarrolladorMapperImpl implements DesarrolladorMapper {
                 .name(desarrollador.getName())
                 .mail(desarrollador.getMail())
                 .rol(desarrollador.getRol())
+                .idJuego(desarrollador.getJuego().getUuid().toString())
                 .build();
     }
 }

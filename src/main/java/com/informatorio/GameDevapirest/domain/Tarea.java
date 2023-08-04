@@ -34,6 +34,18 @@ public class Tarea {
     @ManyToOne
     private Juego juego;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Desarrollador desarrollador;
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "uuid=" + uuid +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado=" + estado +
+                ", fechaLimite=" + fechaLimite +
+                ", juego=" + juego +
+                ", desarrollador=" + desarrollador +
+                '}';
+    }
 }

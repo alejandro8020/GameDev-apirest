@@ -6,6 +6,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -33,4 +35,19 @@ public class Desarrollador {
 
     @ManyToOne
     private Juego juego;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "desarrollador")
+    private List<Tarea> tarea = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Desarrollador{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", mail='" + mail + '\'' +
+                ", rol=" + rol +
+                ", juego=" + juego +
+                '}';
+    }
 }
