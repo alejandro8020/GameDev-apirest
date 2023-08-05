@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -104,4 +105,32 @@ public class TareaServicioImpl implements TareaService {
         }
 
     }
+
+    @Override
+    public List<TareaResponseDTO> getTareabyfecha(String fecha) {
+        List<Tarea> tareaPorFecha;
+        List<TareaResponseDTO> listTarea= new ArrayList<>();
+        if (StringUtils.isNotEmpty(fecha)){
+
+            tareaPorFecha = tareaRepository.findTareaByFechaLimiteAfter(getLocalDateTime(fecha));
+        }else {
+            tareaPorFecha = tareaRepository.findAll();
+        }
+        for (Tarea tarea: tareaPorFecha) {
+            listTarea.add(tareaResponserMapper.tareaToTareaResponseDTO(tarea));
+        }
+        return listTarea;
+
+
+    }
+
+    private LocalDateTime getLocalDateTime(String date){
+        if (!date.isBlank()){
+            String[] parts = date.split("/");
+            return LocalDateTime.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2]),0,0,0);
+        }
+        return null;
+    }
+
+
 }

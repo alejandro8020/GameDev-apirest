@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,4 +19,5 @@ public interface TareaRepository extends JpaRepository<Tarea, UUID> {
     List<Tarea> findTareaByEstado(TareaEnum estado);
     @Query(value= "SELECT * FROM tarea WHERE juego_uuid = :uuid", nativeQuery = true)
     Optional<Tarea> findTareaByJuego_Uuid(@Param("uuid")UUID uuid);
+    List<Tarea> findTareaByFechaLimiteAfter(LocalDateTime fecha);
 }

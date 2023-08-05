@@ -17,4 +17,5 @@ public interface TareaService {
     Optional<Tarea> CambiarEstadoTarea(UUID uuid, TareaEstadoDTO tareaUpdated);
 
     Optional<TareaDTO> getTareaByJuegoId(UUID uuid);
+    List<TareaResponseDTO> getTareabyfecha(String fecha);
 }

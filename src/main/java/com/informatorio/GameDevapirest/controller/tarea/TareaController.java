@@ -64,4 +64,9 @@ public class TareaController {
         return tareaService.getTareaByJuegoId(idJuego).orElseThrow(NotFoundException::new);
     }
 
+    @GetMapping("/fecha")
+    public List<TareaResponseDTO> getTareabyfecha(@RequestParam(name = "fechalimite")String idFecha)  {
+        return tareaService.getTareabyfecha(idFecha);
+    }
+
 }
