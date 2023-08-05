@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JuegoRepository extends JpaRepository<Juego, UUID> {
     Optional<Juego> findBytitleIgnoreCase(String title);
+
 }

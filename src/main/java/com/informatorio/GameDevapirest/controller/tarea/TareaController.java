@@ -3,6 +3,7 @@ package com.informatorio.GameDevapirest.controller.tarea;
 import com.informatorio.GameDevapirest.domain.Juego;
 import com.informatorio.GameDevapirest.domain.Tarea;
 import com.informatorio.GameDevapirest.exception.NotFoundException;
+import com.informatorio.GameDevapirest.model.DTO.desarrollador.DesarrolladorResponseDTO;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 import com.informatorio.GameDevapirest.model.DTO.tarea.TareaDTO;
 import com.informatorio.GameDevapirest.model.DTO.tarea.TareaEstadoDTO;
@@ -28,9 +29,9 @@ public class TareaController {
     private final TareaService tareaService;
 
     @GetMapping()
-    public List<TareaResponseDTO> getAllTarea(){
+    public List<TareaResponseDTO> getAllTarea(@RequestParam(required = false,name = "estado") String estado){
         log.info("Se esta haciendo una consulta por los Juegos");
-        return tareaService.getAllTarea();
+        return tareaService.getAllTarea(estado);
     }
 
     @PostMapping()
@@ -57,4 +58,10 @@ public class TareaController {
             return  new ResponseEntity(HttpStatus.NO_CONTENT);
         }
     }
+
+    @GetMapping("/{idJuego}")
+    public TareaDTO getTareaByJuegoId(@PathVariable(value = "idJuego") UUID idJuego) throws NotFoundException {
+        return tareaService.getTareaByJuegoId(idJuego).orElseThrow(NotFoundException::new);
+    }
+
 }
