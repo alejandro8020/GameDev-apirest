@@ -29,8 +29,8 @@ public class DesarrolladorController {
     }
 
     @PostMapping()
-    public ResponseEntity createBook(@RequestBody DesarrolladorDTO desarrolladorDTO) throws NotFoundException {
-        log.info("Creacion de un nuevo libro");
+    public ResponseEntity createDesarrollador(@RequestBody DesarrolladorDTO desarrolladorDTO) throws NotFoundException {
+        log.info("Creacion de un nuevo desarrollador");
         Desarrollador desarrolladorCreated = desarrolladorService.createDesarrollador(desarrolladorDTO);
 
         HttpHeaders headers = new HttpHeaders();
