@@ -2,9 +2,9 @@ package com.informatorio.GameDevapirest.controller.juego;
 
 import com.informatorio.GameDevapirest.domain.Juego;
 import com.informatorio.GameDevapirest.exception.NotFoundException;
-import com.informatorio.GameDevapirest.model.DTO.desarrollador.DesarrolladorResponseDTO;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoResponseDTO;
+import com.informatorio.GameDevapirest.model.DTO.juego.JuegoTareaDTO;
 import com.informatorio.GameDevapirest.service.juego.JuegoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,5 +42,9 @@ public class JuegoController {
     @GetMapping("/{idJuego}")
     public JuegoResponseDTO getDesarrolladoresByIdJuego(@PathVariable(value = "idJuego") UUID idJuego) throws NotFoundException {
         return juegoService.getDesarrolladoresByIdJuego(idJuego).orElseThrow(NotFoundException::new);
+    }
+    @GetMapping("/tarea/{idJuego}")
+    public JuegoTareaDTO getTareaByIdJuego(@PathVariable(value = "idJuego") UUID idJuego) throws NotFoundException {
+        return juegoService.getTareaByIdJuego(idJuego).orElseThrow(NotFoundException::new);
     }
 }

@@ -1,14 +1,12 @@
 package com.informatorio.GameDevapirest.service.juego.impl;
 
-import com.informatorio.GameDevapirest.domain.Desarrollador;
 import com.informatorio.GameDevapirest.domain.Juego;
-import com.informatorio.GameDevapirest.domain.Tarea;
-import com.informatorio.GameDevapirest.enumeration.tarea.TareaEnum;
-import com.informatorio.GameDevapirest.mapper.desarrollador.DesarrolladorResponseMapper;
 import com.informatorio.GameDevapirest.mapper.juego.JuegoMapper;
 import com.informatorio.GameDevapirest.mapper.juego.JuegoResponseMapper;
+import com.informatorio.GameDevapirest.mapper.juego.JuegoTareaMapper;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 import com.informatorio.GameDevapirest.model.DTO.juego.JuegoResponseDTO;
+import com.informatorio.GameDevapirest.model.DTO.juego.JuegoTareaDTO;
 import com.informatorio.GameDevapirest.repository.juego.JuegoRepository;
 import com.informatorio.GameDevapirest.service.juego.JuegoService;
 import lombok.AllArgsConstructor;
@@ -27,6 +25,7 @@ public class JuegoServiceImpl implements JuegoService {
     private final JuegoMapper juegoMapper;
     private final JuegoRepository juegoRepository;
     private final JuegoResponseMapper juegoResponseMapper;
+    private final JuegoTareaMapper juegoTareaMapper;
     @Override
     public List<JuegoDTO> getAllJuego(String fecha) {
         List<Juego> JuegoPorFecha;
@@ -55,6 +54,16 @@ public class JuegoServiceImpl implements JuegoService {
 
         if (juegoOptional.isPresent()){
             return Optional.of(juegoResponseMapper.juegoToJuegoResponseDTO(juegoOptional.get()));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<JuegoTareaDTO> getTareaByIdJuego(UUID uuid) {
+        Optional<Juego> juegoOptional = juegoRepository.findById(uuid);
+
+        if (juegoOptional.isPresent()){
+            return Optional.of(juegoTareaMapper.juegoToJuegoTareaDTO(juegoOptional.get()));
         }
         return Optional.empty();
     }
