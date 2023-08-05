@@ -33,7 +33,7 @@ public class JuegoMapperImpl implements JuegoMapper {
     private LocalDateTime getLocalDateTime(String date){
         if (!date.isBlank()){
             String[] parts = date.split("/");
-            return LocalDateTime.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2]),0,0);
+            return LocalDateTime.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2]),0,0,0);
         }
         return null;
     }

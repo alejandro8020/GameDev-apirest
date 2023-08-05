@@ -6,4 +6,5 @@ import com.informatorio.GameDevapirest.model.DTO.juego.JuegoDTO;
 public interface JuegoMapper {
     Juego juegoDTOToJuego(JuegoDTO JuegoDTO);
     JuegoDTO juegoToJuegoDTO(Juego Juego);
+
 }
